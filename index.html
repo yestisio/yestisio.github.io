@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ledger — Agies Yestisio Siregar</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+
+  :root{
+    --paper-a: #eef2e6;
+    --paper-b: #e2e9d8;
+    --ink: #1f2e22;
+    --ink-soft: #4c5c4e;
+    --rule: #9fb08f;
+    --margin-red: #a63d33;
+    --stamp-green: #35603f;
+    --stamp-green-soft: #7d9a71;
+    --card-bg: #f7f9f2;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Courier Prime', monospace;
+    color: var(--ink);
+    background-color: var(--paper-a);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--paper-a) 0px,
+      var(--paper-a) 35px,
+      var(--paper-b) 35px,
+      var(--paper-b) 36px
+    );
+    position: relative;
+  }
+
+  body::before{
+    content:"";
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 48px;
+    width: 1.5px;
+    background: var(--margin-red);
+    opacity: 0.45;
+  }
+
+  .wrap{
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 44px 22px 60px 68px;
+  }
+
+  header{
+    margin-bottom: 38px;
+  }
+
+  .eyebrow{
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 6px 0;
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.15;
+    margin: 0 0 10px 0;
+    color: var(--ink);
+  }
+
+  .sub{
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ledger{
+    border-top: 1.5px solid var(--ink);
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .col-heads{
+    display: flex;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .col-heads span:first-child{ flex: 0 0 64px; }
+  .col-heads span:last-child{ margin-left: auto; }
+
+  .entry{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0;
+    transition: background 0.15s ease, padding-left 0.15s ease;
+  }
+  .entry:last-child{ border-bottom: none; }
+
+  .entry:hover, .entry:focus-visible{
+    background: var(--card-bg);
+    padding-left: 10px;
+  }
+  .entry:focus-visible{
+    outline: 2px solid var(--stamp-green);
+    outline-offset: -2px;
+  }
+
+  .entry-row{
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .no{
+    flex: 0 0 64px;
+    font-size: 12px;
+    color: var(--stamp-green-soft);
+  }
+
+  .entry-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 21px;
+    margin: 0;
+  }
+
+  .arrow{
+    margin-left: auto;
+    font-size: 16px;
+    color: var(--stamp-green);
+    flex: 0 0 auto;
+  }
+
+  .entry-desc{
+    margin: 6px 0 0 78px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 44ch;
+  }
+
+  .entry-url{
+    margin: 6px 0 0 78px;
+    font-size: 11.5px;
+    color: var(--stamp-green-soft);
+    word-break: break-all;
+  }
+
+  footer{
+    margin-top: 30px;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stamp{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--stamp-green);
+    color: var(--stamp-green);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transform: rotate(-3deg);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .entry{ transition: none; }
+  }
+
+  @media (max-width: 420px){
+    h1{ font-size: 28px; }
+    .wrap{ padding-left: 56px; padding-right: 16px; }
+    body::before{ left: 36px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Agies Yestisio Siregar</p>
+      <h1>Ledger</h1>
+      <p class="sub">One doorway to every cash record and fee tracker. Open either one below.</p>
+    </header>
+
+    <div class="ledger">
+      <div class="col-heads">
+        <span>No.</span>
+        <span>Description</span>
+        <span>Open</span>
+      </div>
+
+      <a class="entry" href="https://yestisio.github.io/buku-kas/" target="_blank" rel="noopener">
+        <div class="entry-row">
+          <span class="no">01</span>
+          <h2 class="entry-title">Buku Kas</h2>
+          <span class="arrow">→</span>
+        </div>
+        <p class="entry-desc">Daily cash income &amp; expense records.</p>
+        <p class="entry-url">yestisio.github.io/buku-kas</p>
+      </a>
+
+      <a class="entry" href="https://yestisio.github.io/agies-ledger/" target="_blank" rel="noopener">
+        <div class="entry-row">
+          <span class="no">02</span>
+          <h2 class="entry-title">Deal Tracker</h2>
+          <span class="arrow">→</span>
+        </div>
+        <p class="entry-desc">Collaboration &amp; fee tracker — deals, fees, and deadlines for creators.</p>
+        <p class="entry-url">yestisio.github.io/agies-ledger</p>
+      </a>
+    </div>
+
+    <footer>
+      <span>2 entries on record</span>
+    </footer>
+  </div>
+</body>
+</html>
